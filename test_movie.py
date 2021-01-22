@@ -17,8 +17,22 @@ def run_tests():
     # Test initial-value movie
     initial_movie = Movie("Thor: Ragnarok", 2017, "Comedy", True)
     # TODO: Write tests to show this initialisation works
-
+    print(initial_movie)
+    assert initial_movie.title == "Thor: Ragnarok"
+    assert initial_movie.category == "Comedy"
+    assert initial_movie.year == 2017
+    assert initial_movie.is_watched
     # TODO: Add more tests, as appropriate, for each method
+
+    # Test mark-watched:
+    print('Test mark unwatched')
+    initial_movie.mark_unwatched()
+    assert not initial_movie.is_watched
+
+    # Test mark-watched:
+    print('Test mark unwatched')
+    initial_movie.mark_watched()
+    assert initial_movie.is_watched
 
 
 run_tests()

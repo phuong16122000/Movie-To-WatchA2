@@ -3,6 +3,10 @@ from movie import Movie
 from moviecollection import MovieCollection
 
 
+from movie import Movie
+from moviecollection import MovieCollection
+
+
 def run_tests():
     """Test MovieCollection class."""
 
@@ -20,18 +24,29 @@ def run_tests():
 
     # Test adding a new Movie with values
     print("Test adding new movie:")
-    movie_collection.add_movie(Movie("Amazing Grace", 2006, "Drama", False))
+    movie_collection.add_movie(Movie("Chinatown", 1974, "Film Noir", False))
     print(movie_collection)
 
     # Test sorting movies
     print("Test sorting - year:")
-    movie_collection.sort("year")
-    print(movie_collection)
+    sorted_list = movie_collection.sort_movies("year", desc=True)
+    print(MovieCollection.format_data(sorted_list))
     # TODO: Add more sorting tests
 
     # TODO: Test saving movies (check CSV file manually to see results)
+    print("Test saving movie:")
+    movie_collection.save_movies('movies.csv')
 
     # TODO: Add more tests, as appropriate, for each method
+    print("Test unwatched count:")
+    print(movie_collection.count_unwatch())
+    print("Test watched count:")
+    print(movie_collection.count_watch())
+
+    # Add filter method
+    print('Test filter method:')
+    movie_collection.search_movies('star', 1977, 'action')
+    print(MovieCollection.format_data(movie_collection.search_list))
 
 
 run_tests()
